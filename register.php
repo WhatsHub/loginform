@@ -25,15 +25,11 @@ console_log("Connected successfully to database :)\n");
 // perform this wenn submit button is pressed
 if (isset($_GET["register"])){
     $error = false;
-    $firstname = $_POST["firstname"];
-    $lastname = $_POST["lastname"];
-    $email = $_POST["email"];
+    $firstname = filter_var($_POST["firstname"], FILTER_SANITIZE_STRING);
+    $lastname = filter_var($_POST["lastname"], FILTER_SANITIZE_STRING);
+    $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
     $password1 = $_POST["password1"];
     $password2 = $_POST["password2"];
-
-    $details = array($firstname, $lastname, $email, $password1, $password2);
-
-    console_log($details);
 
     // is entered email valid
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)){

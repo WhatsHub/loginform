@@ -14,26 +14,35 @@ require "inc/function.inc.php";
 
 <?php
 if (isset($_GET["login"])) {
-    $email = $_POST["email"];
+    $error = false;
+    $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
     $password = $_POST["password"];
 
-    $sql_query_user = "SELECT * FROM users WHERE email = '$email'";
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        echo "Please enter valid email address <br>";
+        $error = true;
+    }
 
-    $result = $conn->query($sql_query_user);
+    if (!$error) {
 
-    if ($result->num_rows > 0) {
-       $userinfo = $result->fetch_row();
-       console_log($userinfo);
+        $sql_query_user = "SELECT * FROM users WHERE email = '$email'";
 
-       if (password_verify($password, $userinfo[2])){
-           // Session variable set to userid
-           $_SESSION["userid"] = $userinfo[0];
-           //TODO: create intern.php
-           die('Login successful. Forward to <a href="intern.php">intern section.</a>');
-       }
+        $result = $conn->query($sql_query_user);
 
-    } else {
-        echo "ERROR: Incorrect email or password <br>";
+        if ($result->num_rows > 0) {
+            $userinfo = $result->fetch_row();
+            console_log($userinfo);
+
+            if (password_verify($password, $userinfo[2])){
+                // Session variable set to userid
+                $_SESSION["userid"] = $userinfo[0];
+                //TODO: create intern.php
+                die('Login successful. Forward to <a href="intern.php">intern section.</a>');
+            }
+
+        } else {
+            echo "ERROR: Incorrect email or password <br>";
+        }
     }
 }
 ?>
