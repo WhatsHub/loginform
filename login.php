@@ -15,11 +15,13 @@ require "inc/function.inc.php";
 <?php
 if (isset($_GET["login"])) {
     $error = false;
+    $error_msg = "";
     $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
     $password = $_POST["password"];
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
         echo "Please enter valid email address <br>";
+        $error_msg = "ERROR: The entered email was not a valid email address.\n";
         $error = true;
     }
 
@@ -43,6 +45,10 @@ if (isset($_GET["login"])) {
         } else {
             echo "ERROR: Incorrect email or password <br>";
         }
+    }
+
+    if ($error){
+        console_log($error_msg);
     }
 }
 ?>
