@@ -1,5 +1,8 @@
 <?php
-
+/*
+ * Configuration File for mysql
+ * creates the mysqli connection object $conn
+ */
 $servername = "localhost";
 $dbname = "loginsystem";
 $username = "loginsystem";

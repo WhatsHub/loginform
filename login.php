@@ -28,6 +28,7 @@ if (isset($_GET["login"])) {
        if (password_verify($password, $userinfo[2])){
            // Session variable set to userid
            $_SESSION["userid"] = $userinfo[0];
+           console_log($_SESSION["userid"]);
            //TODO: create intern.php
            die('Login successful. Forward to <a href="intern.php">intern section.</a>');
        }
@@ -50,3 +51,4 @@ if (isset($_GET["login"])) {
 
     <input type="submit" value="Submit!">
 </form>
+</body>
