@@ -64,4 +64,6 @@ if (isset($_GET["login"])) {
     <input type="password" name="password"><br>
 
     <input type="submit" value="Submit!">
+
+    Or go <a href="register.php">register</a> yourself.
 </form>
