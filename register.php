@@ -2,6 +2,8 @@
 session_start();
 require "inc/config.inc.php";
 require "inc/function.inc.php";
+
+print_navbar();
 ?>
 
 <!DOCTYPE html>

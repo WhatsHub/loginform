@@ -1,6 +1,8 @@
 <?php
 session_start();
 session_destroy();
+
+print_navbar();
 ?>
 
 <!DOCTYPE html>

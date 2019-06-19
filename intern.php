@@ -7,16 +7,18 @@ if (!isset($_SESSION["userid"])){
     die('Please login first at <a href=login.php>Login</a>');
 }
 
+// TODO: make a php function that prints the Document header into the page
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Secret Website</title>
+    <link rel="stylesheet" type="text/css" href="styles/navbar.css" media="screen" />
 </head>
 <body>
+<?php print_navbar(); ?>
 Hello <?php echo $_SESSION["userid"] ?> Congratulations you logged in succesfully and can now see this secret website!
 <br>
 <br>

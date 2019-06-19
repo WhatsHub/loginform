@@ -2,6 +2,7 @@
 session_start();
 require "inc/config.inc.php";
 require "inc/function.inc.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +14,9 @@ require "inc/function.inc.php";
 <body>
 
 <?php
+
+print_navbar();
+
 if (isset($_GET["login"])) {
     $error = false;
     $error_msg = "";
