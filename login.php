@@ -10,12 +10,13 @@ require "inc/function.inc.php";
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="styles/navbar.css" media="screen" />
 </head>
 <body>
 
 <?php
 
-print_navbar();
+include("html/navbar.html");
 
 if (isset($_GET["login"])) {
     $error = false;
@@ -71,3 +72,4 @@ if (isset($_GET["login"])) {
 
     Or go <a href="register.php">register</a> yourself.
 </form>
+</body>

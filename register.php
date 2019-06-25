@@ -3,7 +3,6 @@ session_start();
 require "inc/config.inc.php";
 require "inc/function.inc.php";
 
-print_navbar();
 ?>
 
 <!DOCTYPE html>
@@ -11,10 +10,15 @@ print_navbar();
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="styles/navbar.css" media="screen" />
 </head>
 <body>
 
 <?php
+
+
+include("html/navbar.html");
+
 $showform = true;
 
 // check if connected successfully
